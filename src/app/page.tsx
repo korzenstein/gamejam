@@ -11,7 +11,7 @@ export default async function Home() {
 }
 
 async function getData() {
-  const apiKey = "AIzaSyAz7mCGOctAo_UhiMxfLwLqSVGEqrle8Uc";
+  const apiKey = process.env.YOUTUBE_API_KEY;
   const baseUrl = "https://www.googleapis.com/youtube/v3/";
   const parameters = "videos?part=snippet,contentDetails&chart=mostPopular";
   const url = `${baseUrl}${parameters}&maxResults=20&regionCode=US&key=${apiKey}`;
