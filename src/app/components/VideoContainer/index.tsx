@@ -1,8 +1,13 @@
 "use client";
 
 import VideoPlayer from "../VideoPlayer";
+import React, { FunctionComponent } from "react";
 
-const VideoContainer = () => {
+interface VideoContainerProps {
+  src: string;
+}
+
+const VideoContainer: FunctionComponent<VideoContainerProps> = ({ src }) => {
   return (
     <section
       style={{
@@ -13,7 +18,7 @@ const VideoContainer = () => {
         justifyContent: "center",
       }}
     >
-      <VideoPlayer />
+      <VideoPlayer src={src} />
     </section>
   );
 };

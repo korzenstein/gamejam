@@ -3,7 +3,8 @@
 import CentralUI from "../CentralUI";
 import VideoContainer from "../VideoContainer";
 
-const GamePageContainer = () => {
+const GamePageContainer = ({ data }) => {
+  console.log(data);
   return (
     <main
       style={{
@@ -15,9 +16,9 @@ const GamePageContainer = () => {
         justifyContent: "center",
       }}
     >
-      <VideoContainer />
+      <VideoContainer src={data[0].id} />
       <CentralUI />
-      <VideoContainer />
+      <VideoContainer src={data[1].id} />
     </main>
   );
 };
