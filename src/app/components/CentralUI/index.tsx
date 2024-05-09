@@ -1,6 +1,7 @@
 "use client";
-
+import useGamJamStore from "@/app/store/gamJamStore";
 const CentralUI = () => {
+  const { setPlayer1Score, setPlayer2Score } = useGamJamStore();
   return (
     <>
       <div
