@@ -3,8 +3,7 @@
 import CentralUI from "../CentralUI";
 import VideoContainer from "../VideoContainer";
 
-const GamePageContainer = ({ data }) => {
-  console.log(data);
+const GamePageContainer = ({ data }: any) => {
   return (
     <main
       style={{
