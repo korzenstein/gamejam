@@ -3,16 +3,24 @@ import React, { FunctionComponent } from "react";
 import CentralUI from "../CentralUI";
 import VideoContainer from "../VideoContainer";
 import TopUI from "../TopUI";
+import useGamJamStore from "@/app/store/gamJamStore";
+
 interface GamePageContainerProps {
   data?: { id: string }[];
 }
 const GamePageContainer: FunctionComponent<GamePageContainerProps> = ({
   data,
 }) => {
-  console.log(data);
   if (!data || data.length === 0) {
     return <p>No data available</p>;
   }
+
+  const { currentRound } = useGamJamStore();
+
+  console.log(data);
+
+  const leftVideo = data[currentRound * 2].id;
+  const rightVideo = data[currentRound * 2 + 1].id;
   return (
     <main
       style={{
@@ -33,9 +41,9 @@ const GamePageContainer: FunctionComponent<GamePageContainerProps> = ({
           width: "100%",
         }}
       >
-        <VideoContainer src={data[0].id} />
-        <CentralUI />
-        <VideoContainer src={data[1].id} />
+        <VideoContainer src={leftVideo} />
+        <CentralUI data={data} />
+        <VideoContainer src={rightVideo} />
       </div>
     </main>
   );

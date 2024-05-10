@@ -12,7 +12,7 @@ export default async function Home() {
 }
 
 async function getData() {
-  const apiKey = process.env.YOUTUBE_API_KEY;
+  const apiKey = process.env.YOUTUBE_API_KEY2;
   const baseUrl = "https://www.googleapis.com/youtube/v3/";
   // TODO: we will want to change snippetParameters to be an array of strings
   const snippetParameters =
