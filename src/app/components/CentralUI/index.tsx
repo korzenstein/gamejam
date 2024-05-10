@@ -78,7 +78,7 @@ const CentralUI = ({ data }: any) => {
           <div style={{ display: "flex", gap: "2rem" }}>
             <button
               style={{
-                background: "gray",
+                background: selectedVideo === "left" ? "lightgreen" : "gray",
                 border: "none",
                 cursor: "pointer",
               }}
@@ -92,7 +92,11 @@ const CentralUI = ({ data }: any) => {
               />
             </button>
             <button
-              style={{ background: "gray", border: "none", cursor: "pointer" }}
+              style={{
+                background: selectedVideo === "right" ? "lightgreen" : "gray",
+                border: "none",
+                cursor: "pointer",
+              }}
               onClick={() => handleChoice("right")}
             >
               <Image
