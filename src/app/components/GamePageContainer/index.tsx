@@ -9,6 +9,7 @@ interface GamePageContainerProps {
 const GamePageContainer: FunctionComponent<GamePageContainerProps> = ({
   data,
 }) => {
+  console.log(data);
   if (!data || data.length === 0) {
     return <p>No data available</p>;
   }
