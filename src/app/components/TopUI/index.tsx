@@ -13,9 +13,11 @@ const TopUI = () => {
           width: "100%",
           padding: "3rem 5rem",
           position: "relative",
+          borderBottom: "2px solid white",
+          backgroundColor: "#BEB09B",
         }}
       >
-        <h3>Which one has more views?</h3>
+        <h3 style={{ fontSize: "2rem" }}>Which one has more views?</h3>
         <p
           style={{
             fontSize: "3rem",
@@ -23,11 +25,12 @@ const TopUI = () => {
             left: "50%",
             top: "50%",
             transform: "translate(-50%, -50%)",
+            fontWeight: 700,
           }}
         >
           {playerScore}
         </p>
-        <p style={{ fontSize: "2rem" }}>TOTAL POINTS</p>
+        <p style={{ fontSize: "2.2rem", fontWeight: 700 }}>Total Points</p>
       </div>
     </>
   );

@@ -17,11 +17,10 @@ const GamePageContainer: FunctionComponent<GamePageContainerProps> = ({
       style={{
         display: "flex",
         flexDirection: "column",
-        height: "100%",
+        height: "100vh",
         width: "100vw",
-        background: "red",
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "start",
       }}
     >
       <TopUI />
@@ -30,6 +29,7 @@ const GamePageContainer: FunctionComponent<GamePageContainerProps> = ({
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          width: "100%",
         }}
       >
         <VideoContainer src={data[0].id} />
