@@ -11,11 +11,13 @@ const VideoContainer: FunctionComponent<VideoContainerProps> = ({ src }) => {
   return (
     <section
       style={{
-        background: "red",
+        background: "#463D3D",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
+        width: "100%",
+        height: "100%",
       }}
     >
       <VideoPlayer src={src} />
