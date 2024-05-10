@@ -1,29 +1,43 @@
 import useGamJamStore from "@/app/store/gamJamStore";
 import Image from "next/image";
 
-const CentralUI = () => {
+const CentralUI = ({ data }: any) => {
   const {
-    videos,
     selectedVideo,
     setPlayerScore,
     setSelectedVideo,
     playerScore,
     currentIndex,
+    currentRound,
+    setCurrentRound,
+    nextVideoPair,
   } = useGamJamStore();
 
-  const handleSubmit = () => {
-    const isCorrect =
-      (selectedVideo === "left" &&
-        videos[currentIndex].views > videos[currentIndex + 1].views) ||
-      (selectedVideo === "right" &&
-        videos[currentIndex + 1].views > videos[currentIndex].views);
-    setPlayerScore(isCorrect);
+  const handleChoice = (side: "left" | "right") => {
+    setSelectedVideo(side);
   };
 
-  // if (videos.length === 0 || currentIndex >= videos.length - 1) {
-  //   return <div>Loading videos or no more videos available...</div>;
-  // }
+  const handleSubmit = () => {
+    if (selectedVideo === null) return;
 
+    const isCorrect =
+      selectedVideo === "left"
+        ? data[currentIndex].statistics.viewCount >
+          data[currentIndex + 1].statistics.viewCount
+        : data[currentIndex + 1].statistics.viewCount >
+          data[currentIndex].statistics.viewCount;
+
+    console.log(isCorrect ? "Correct guess!" : "Incorrect guess.");
+    setPlayerScore(isCorrect);
+
+    if (currentRound < 10) {
+      nextVideoPair();
+      setCurrentRound(currentRound + 1);
+    } else {
+      console.log("Game Finished. Final Score:", playerScore);
+      // Reset game logic or handle end game state
+    }
+  };
   let potentialScoreAmount = 10;
 
   return (
@@ -68,7 +82,7 @@ const CentralUI = () => {
                 border: "none",
                 cursor: "pointer",
               }}
-              onClick={() => setSelectedVideo("left")}
+              onClick={() => handleChoice("left")}
             >
               <Image
                 src="/images/arrow.svg"
@@ -79,7 +93,7 @@ const CentralUI = () => {
             </button>
             <button
               style={{ background: "gray", border: "none", cursor: "pointer" }}
-              onClick={() => setSelectedVideo("right")}
+              onClick={() => handleChoice("right")}
             >
               <Image
                 style={{ transform: "scaleX(-1)" }}
