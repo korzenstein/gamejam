@@ -1,23 +1,41 @@
 "use client";
-
+import React, { FunctionComponent } from "react";
 import CentralUI from "../CentralUI";
 import VideoContainer from "../VideoContainer";
-
-const GamePageContainer = ({ data }: any) => {
+import TopUI from "../TopUI";
+interface GamePageContainerProps {
+  data?: { id: string }[];
+}
+const GamePageContainer: FunctionComponent<GamePageContainerProps> = ({
+  data,
+}) => {
+  if (!data || data.length === 0) {
+    return <p>No data available</p>;
+  }
   return (
     <main
       style={{
         display: "flex",
-        height: "100vh",
+        flexDirection: "column",
+        height: "100%",
         width: "100vw",
         background: "red",
         alignItems: "center",
         justifyContent: "center",
       }}
     >
-      <VideoContainer src={data[0].id} />
-      <CentralUI />
-      <VideoContainer src={data[1].id} />
+      <TopUI />
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <VideoContainer src={data[0].id} />
+        <CentralUI />
+        <VideoContainer src={data[1].id} />
+      </div>
     </main>
   );
 };
