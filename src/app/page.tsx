@@ -1,7 +1,16 @@
 import GamePageContainer from "./components/GamePageContainer";
 
+const clickbaitQueries = [
+  "I spent 24 hours in",
+  "you won't believe what I found!",
+  "The most epic fails compilation ever!",
+  "Reacting to the most cringe-worthy videos of all time!",
+  "Is this the future of ?!",
+];
+
 export default async function Home() {
-  const data = await getData();
+  const queryIndex = 0;
+  const data = await getData(queryIndex);
   // const data = [{ id: "TsKHjFeonRE" }, { id: "6KeG_i8CWE8" }];
 
   return (
@@ -47,10 +56,10 @@ export default async function Home() {
 // }
 
 // newer fetch model with search term
-async function getData() {
+async function getData(queryIndex: number) {
   const apiKey = process.env.YOUTUBE_API_KEY2;
   const baseUrl = "https://www.googleapis.com/youtube/v3/";
-  const searchTerm = encodeURIComponent("you won't believe what I found!");
+  const searchTerm = encodeURIComponent(clickbaitQueries[queryIndex]);
   const searchUrl = `${baseUrl}search?part=snippet&q=${searchTerm}&maxResults=20&regionCode=US&type=video&key=${apiKey}`;
 
   const searchRes = await fetch(searchUrl);
